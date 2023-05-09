@@ -3,19 +3,37 @@ console.log("welcome to Rock Paper Scissors");
 let rock="rock";
 let paper="paper";
 let scissors="scissors";
+let playerChoice= prompt("Choose: rock, paper, scissors");
 //scores set to 0
 let computerScore=0;
 let playerScore=0;
-while computerScore && playerScore <=5:
-	
 //prompt player to pick either rock, paper or scissors
-	let playerChoice= prompt("Choose: rock, paper, scissors");
-  function playerChoice(playerChoice){
-  	return playerChoice.toLowerCase();
-    com.log(playerChoice)
+function playerMove(x){
+  	console.log(x.toLowerCase());
   }
+function computerMove(){
+let computerChoice= Math.floor(Math.random() *2);
+	if (computerChoice===0){
+		ComputerChoice ="rock";
+  }
+  else if (computerChoice===1){
+  	computerChoice = "paper";
+  }
+  else if(computerChoice === 2){
+  	computerChoice = "scissors";
+  }
+  console.log(`computer choice is ${computerChoice}`);
+}
+//while (computerScore && playerScore <=5){
+	playerMove(playerChoice); 
+  computerMove();
+  playerScore++;
+  console.log(playerScore);
+
+	
   
-  
+ 
+//}  
   
   
 //computer player randomly chooses rock paper or scissors
