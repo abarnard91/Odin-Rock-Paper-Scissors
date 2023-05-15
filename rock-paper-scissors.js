@@ -1,4 +1,4 @@
-//document.addEventListener("load", function(event){
+document.getElementById("button").addEventListener("click", (e)=> {
 		let rock = "rock";
 		let paper = "paper";
 		let scissors = "scissors";
@@ -30,9 +30,7 @@
 			console.log(`computer choice is ${computerChoice}`);
 		}
 		while ((computerScore < 5) && (playerScore < 5)) {
-			const element=document.getElementById("button");
-			element.addEventListener("click", function(event) {
-				let playerChoice = prompt("Choose: rock, paper, scissors");})
+			let playerChoice = prompt("Choose: rock, paper, scissors");
 			console.log("in the loop");
 			playerMove(playerChoice);
 			computerMove();
@@ -44,12 +42,8 @@
 				computerScore++;
 				console.log(`player score is ${playerScore} and computer score is ${computerScore}`);
 			}
-
-
-
-
-			//})
-		}
+    }
+    })
 
 
 			//computer player randomly chooses rock paper or scissors
