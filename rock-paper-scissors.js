@@ -1,49 +1,47 @@
 document.getElementById("button").addEventListener("click", (e)=> {
-		let rock = "rock";
-		let paper = "paper";
-		let scissors = "scissors";
-
-		//scores set to 0
-		let computerScore = 0;
-		let playerScore = 0;
-		//prompt player to pick either rock, paper or scissors
-		function playerMove(x) {
+	var rock="rock";
+  var paper= "paper";
+  var scissors="scissors";
+  var playerChoice=prompt("Choose rock, paper, or scissors");
+  var computerChoice="blank";
+	function playerMove(x) {
 			x = x.toLowerCase();
+      playerChoice=x
 			console.log(`player entered ${x}`);
 			if (x !== "rock" && x !== "paper" && x !== "scissors") {
 				x = prompt("incorrect choice. Please choose: rock, paper, scissors");
+        playerChoice=x.toLowerCase();
 				console.log(`if loop response ${x}`);
 			}
-			console.log(`player choice is ${x}`);
-		}
-		function computerMove() {
-			let computerChoice = Math.floor(Math.random() * 2);
-			if (computerChoice === 0) {
+			console.log(`player choice is ${playerChoice}`);
+      
+ }
+ 
+ function computerMove() {
+			let randomMove = Math.floor(Math.random() * 2);
+			if (randomMove === 0) {
 				computerChoice = "rock";
 			}
-			else if (computerChoice === 1) {
+			else if (randomMove === 1) {
 				computerChoice = "paper";
 			}
-			else if (computerChoice === 2) {
+			else if (randomMove === 2) {
 				computerChoice = "scissors";
 			}
 			console.log(`computer choice is ${computerChoice}`);
-		}
-		while ((computerScore < 5) && (playerScore < 5)) {
-			let playerChoice = prompt("Choose: rock, paper, scissors");
-			console.log("in the loop");
-			playerMove(playerChoice);
-			computerMove();
-			keepGoing = prompt("Ready to keep play again? (yes or no)");
-			if (keepGoing.toLowerCase() === "no") {
-				break;
-			}
-			else {
-				computerScore++;
-				console.log(`player score is ${playerScore} and computer score is ${computerScore}`);
-			}
-    }
-    })
+}
+playerMove(playerChoice);
+computerMove();
+
+console.log(`player choice outside of function is ${playerChoice} and computer choice is ${computerChoice}`)
+
+if (playerChoice ===computerChoice){
+	console.log("it's a tie. NO POINTS!!! push button again!")
+}
+if (((playerChoice === paper) && (computerChoice===scissors))|| ((playerChoice=== rock) &&(computerChoice===paper)) ||((playerChoice===scissors)&&(computerChoice===rock))){
+console.log("you Lose! Good Day Sir!")
+}
+})
 
 
 			//computer player randomly chooses rock paper or scissors
