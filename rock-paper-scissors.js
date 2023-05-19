@@ -3,6 +3,8 @@ var playerScore=0;
 var computerScore=0;
 
 document.getElementById("button").addEventListener("click", (e)=> {
+	document.getElementById("button").innerHTML="Click again to keep playing!"
+	//if the score for the playor or computer is == 5 the loop breaks
 	while ((playerScore<5) &&(computerScore<5)){
 		var rock="rock";
 		var paper= "paper";
@@ -25,6 +27,7 @@ document.getElementById("button").addEventListener("click", (e)=> {
 		
 		}
 
+		//computer player randomly chooses rock paper or scissors
 		function computerMove() {
 				let randomMove = Math.floor(Math.random() * 2);
 				if (randomMove === 0) {
@@ -43,61 +46,36 @@ document.getElementById("button").addEventListener("click", (e)=> {
 
 		console.log(`player choice outside of function is ${playerChoice} and computer choice is ${computerChoice}`)
 
+		//compare player and computer results:
 		if (playerChoice ===computerChoice){
 			console.log("it's a tie. NO POINTS!!! push button again!");
 			break;
 		}
 		if (((playerChoice === paper) && (computerChoice===scissors))|| ((playerChoice=== rock) &&(computerChoice===paper)) ||((playerChoice===scissors)&&(computerChoice===rock))){
 			console.log("you Lose! Good Day Sir!");
-			computerScore+=1
+			computerScore+=5
 			console.log(`The score is player ${playerScore} computer ${computerScore}`);
 			break;
 		}
 		if  (((playerChoice === scissors) && (computerChoice===paper))|| ((playerChoice=== paper) &&(computerChoice===rock)) ||((playerChoice===rock)&&(computerChoice===scissors))){
 			console.log("You've won the round!!!! huzzah! 1 point to you")
-			playerScore+=1
+			playerScore+=5
 			console.log(`The score is player ${playerScore} computer ${computerScore}`)
 			break
 		}
 	}
+				
+	// if the player has 5 points, display "you win"
 	if (playerScore==5){
-		document.getElementByID("header").innerHTML="YOU WON!!!!";
+		document.getElementById("header").innerHTML="YOU WON!!!!";
+		document.getElementById("instructions").innerHTML="refresh the page to play again";
 	}
+
+	// if the computer has 5 points, display "you lose
 	if (computerScore==5){
 		document.getElementById("header").innerHTML="YOU LOSE GO HOME!";
+		document.getElementById("instructions").innerHTML="refresh the page to play again";
 	}
 
 })
 
-
-
-
-			//computer player randomly chooses rock paper or scissors
-			//compare player and computer results:
-			//if player picks rock and:
-			//computer picks rock
-			//result= tie no points
-			//if computer picks paper
-			//result= computer wins computer gains 1 point
-			//if computer picks scissors
-			//result= player wins, player gains 1 point
-			//if player picks paper and:
-			//computer picks rock
-			//result= player wins, player gains 1 point 
-			//if computer picks paper
-			//result= tie no points 
-			//if computer picks scissors
-			//result= computer wins computer gains 1 point
-			//if player picks scissors and:
-			//computer picks rock
-			//result= computer wins computer gains 1 point
-			//if computer picks paper
-			//result= player wins, player gains 1 point 
-			//if computer picks scissors
-			//result= tie no points
-			//if a point is scored or a tie, the game is looped to prompt the player to pick
-			//if the score for the playor or computer is == 5 the loop breaks
-			// if the player has 5 points, display "you win"
-			// if the computer has 5 points, display "you lose
-		
-	//})
