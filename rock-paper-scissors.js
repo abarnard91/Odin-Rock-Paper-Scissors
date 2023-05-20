@@ -53,13 +53,13 @@ document.getElementById("button").addEventListener("click", (e)=> {
 		}
 		if (((playerChoice === paper) && (computerChoice===scissors))|| ((playerChoice=== rock) &&(computerChoice===paper)) ||((playerChoice===scissors)&&(computerChoice===rock))){
 			console.log("you Lose! Good Day Sir!");
-			computerScore+=5
+			computerScore+=1
 			console.log(`The score is player ${playerScore} computer ${computerScore}`);
 			break;
 		}
 		if  (((playerChoice === scissors) && (computerChoice===paper))|| ((playerChoice=== paper) &&(computerChoice===rock)) ||((playerChoice===rock)&&(computerChoice===scissors))){
 			console.log("You've won the round!!!! huzzah! 1 point to you")
-			playerScore+=5
+			playerScore+=1
 			console.log(`The score is player ${playerScore} computer ${computerScore}`)
 			break
 		}
@@ -69,12 +69,14 @@ document.getElementById("button").addEventListener("click", (e)=> {
 	if (playerScore==5){
 		document.getElementById("header").innerHTML="YOU WON!!!!";
 		document.getElementById("instructions").innerHTML="refresh the page to play again";
+		document.getElementById("button").innerHTML="Click me all you want. I don't do anything."
 	}
 
 	// if the computer has 5 points, display "you lose
 	if (computerScore==5){
 		document.getElementById("header").innerHTML="YOU LOSE GO HOME!";
 		document.getElementById("instructions").innerHTML="refresh the page to play again";
+		document.getElementById("button").innerHTML="Click me all you want. I don't do anything."
 	}
 
 })
