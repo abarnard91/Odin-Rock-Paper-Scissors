@@ -54,20 +54,24 @@ function computerMove() {
 
 		//compare player and computer results:
 function compareResults(){
+  const score=document.getElementById("instructions");
+  const preScore=document.createElement("div");
+  preScore.setAttribute('id','prescore');
+  score.appendChild(preScore);
   if (playerChoice ===computerChoice){
-    console.log("it's a tie. NO POINTS!!! push button again!");
+    preScore.textContent = "it's a tie. NO POINTS!!! push button again!";
 
       }
   if (((playerChoice === paper) && (computerChoice===scissors))|| ((playerChoice=== rock) &&(computerChoice===paper)) ||((playerChoice===scissors)&&(computerChoice===rock))){
-    console.log("you Lose! Good Day Sir!");
+    preScore.textContent = "you Lose! Good Day Sir!";
     computerScore+=1
-    console.log(`The score is player ${playerScore} computer ${computerScore}`);
+    score.textContent = `The score is player ${playerScore} computer ${computerScore}`;
 
       }
   if  (((playerChoice === scissors) && (computerChoice===paper))|| ((playerChoice=== paper) &&(computerChoice===rock)) ||((playerChoice===rock)&&(computerChoice===scissors))){
-    console.log("You've won the round!!!! huzzah! 1 point to you")
+    preScore.textContent = "You've won the round!!!! huzzah! 1 point to you";
     playerScore+=1
-    console.log(`The score is player ${playerScore} computer ${computerScore}`)
+    score.textContent=`The score is player ${playerScore} computer ${computerScore}`;
     }
 
 
