@@ -20,6 +20,31 @@ button{background-color: black;
         font-weight: 600;
         
 }
+.images{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100vw;
+}
+#scissors-image, #rock-image, #paper-image{
+  margin: 10px;
+   
+}
+.animated{ animation-duration: 1s;
+    animation-name: slidein;
+    animation-iteration-count: 1;}
+@keyframes slidein {
+  0% {
+    margin-left: 0%;
+  }
+  50% {
+    margin-left: 300px;
+  }
+  100% {
+    margin-left: 0%;
+  }
+}
+
 .buttons{display: flex;
         flex-direction: row;
         justify-content: space-around;
