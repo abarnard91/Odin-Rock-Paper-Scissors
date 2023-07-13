@@ -11,17 +11,33 @@ var rock="rock";
 var paper= "paper";
 var scissors="scissors";
 var playerChoice=""
+var paperImage=document.getElementById("paper-image");
+var rockImage=document.getElementById("rock-image");
+var scissorsImage=document.getElementById("scissors-image");
 document.getElementById("rock").addEventListener("click", ()=> {
+	paperImage.classList.remove('animated');
+  scissorsImage.classList.remove('animated');
+  rockImage.classList.add('animated');
+  
   playerMove("rock");
   computerMove();
   compareResults();
   });
 document.getElementById("paper").onclick=()=>{
 	playerMove("paper");
+  paperImage.classList.add('animated');
+  rockImage.classList.remove('animated');
+  scissorsImage.classList.remove('animated');
+  
+  //document.getElementById("paper-image").style.animationIterationCount="1";
 	computerMove();
 	compareResults();
   }
 document.getElementById("scissors").onclick=()=>{
+	paperImage.classList.remove('animated');
+  scissorsImage.classList.add('animated');
+  rockImage.classList.remove('animated');
+  
 	playerMove("scissors");
 	computerMove();
 	compareResults();
@@ -89,7 +105,7 @@ function compareResults(){
     document.getElementById("instructions").innerHTML="Click the button or Close the page there's nothing else to do here ";
     document.getElementsByClassName("buttons")[0].style="hidden";
     document.getElementById("button").style.visibility="visible";
-    document.getElementById("button").innerHTML="Click me to play again."
+    document.getElementById("button").innerHTML="Click me to play again.";
     playerScore=0;
     computerScore=0;
     return playerScore, computerScore;
@@ -99,9 +115,11 @@ function compareResults(){
   if (computerScore===5){
     document.getElementById("header").innerHTML="YOU LOSE GO HOME!";
     document.getElementById("instructions").innerHTML="Click the button or Close the page there's nothing else to do here ";
-    document.getElementsById("button").innerHTML="Click me to play again."
+    
     document.getElementsByClassName("buttons")[0].style="hidden";
     document.getElementById("button").style.visibility="visible";
+    //document.getElementsById("button").innerHTML="Click me to play again."
+    document.getElementById("button").innerHTML="Click me to play again.";
     playerScore=0;
     computerScore=0;
     return playerScore, computerScore;    
