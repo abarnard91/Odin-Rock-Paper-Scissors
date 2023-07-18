@@ -25,6 +25,7 @@ button{background-color: black;
   flex-direction: row;
   justify-content: space-around;
   width: 100vw;
+  visibility:hidden;
 }
 #scissors-image, #rock-image, #paper-image{
   margin: 10px;
@@ -32,7 +33,10 @@ button{background-color: black;
 }
 .animated{ animation-duration: 1s;
     animation-name: slidein;
-    animation-iteration-count: 1;}
+    animation-iteration-count: 1;
+    animation-fill-mode:both;
+    }
+    
 @keyframes slidein {
   0% {
     margin-left: 0%;
