@@ -21,7 +21,10 @@ var scissorsImage=document.getElementById("scissors-image");
 document.getElementById("rock").addEventListener("click", ()=> {
 	paperImage.classList.remove('animated');
   scissorsImage.classList.remove('animated');
-  rockImage.classList.add('animated');
+  rockImage.classList.remove('animated');
+  window.requestAnimationFrame(function() {
+    rockImage.classList.add('animated');
+  });
   
   
   playerMove("rock");
@@ -30,9 +33,13 @@ document.getElementById("rock").addEventListener("click", ()=> {
   });
 document.getElementById("paper").onclick=()=>{
 	playerMove("paper");
-  paperImage.classList.add('animated');
+  paperImage.classList.remove('animated');
   rockImage.classList.remove('animated');
   scissorsImage.classList.remove('animated');
+  window.requestAnimationFrame(function() {
+    paperImage.classList.add('animated');
+  });
+  
   
   //document.getElementById("paper-image").style.animationIterationCount="1";
 	computerMove();
@@ -40,8 +47,11 @@ document.getElementById("paper").onclick=()=>{
   }
 document.getElementById("scissors").onclick=()=>{
 	paperImage.classList.remove('animated');
-  scissorsImage.classList.add('animated');
+  scissorsImage.classList.remove('animated');
   rockImage.classList.remove('animated');
+  window.requestAnimationFrame(function() {
+    scissorsImage.classList.add('animated');
+  });
   
 	playerMove("scissors");
 	computerMove();
