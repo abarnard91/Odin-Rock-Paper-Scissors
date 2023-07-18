@@ -4,7 +4,9 @@ var computerScore=0;
 
 document.getElementById("button").addEventListener("click", (e)=> {
 	document.getElementById("button").style.visibility="hidden";
-  document.getElementsByClassName("buttons")[0].style.visibility="visible";})
+  document.getElementsByClassName("buttons")[0].style.visibility="visible";
+  document.getElementsByClassName("images")[0].style.visibility="visible";
+  })
 	//if the score for the playor or computer is == 5 the loop breaks
 	//while ((playerScore<5) &&(computerScore<5)){
 var rock="rock";
@@ -14,10 +16,13 @@ var playerChoice=""
 var paperImage=document.getElementById("paper-image");
 var rockImage=document.getElementById("rock-image");
 var scissorsImage=document.getElementById("scissors-image");
+
+
 document.getElementById("rock").addEventListener("click", ()=> {
 	paperImage.classList.remove('animated');
   scissorsImage.classList.remove('animated');
   rockImage.classList.add('animated');
+  
   
   playerMove("rock");
   computerMove();
