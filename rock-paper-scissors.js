@@ -16,6 +16,7 @@ var playerChoice=""
 var paperImage=document.getElementById("paper-image");
 var rockImage=document.getElementById("rock-image");
 var scissorsImage=document.getElementById("scissors-image");
+var lightningImage=document.getElementById('lightning');
 
 
 document.getElementById("rock").addEventListener("click", ()=> {
@@ -24,9 +25,10 @@ document.getElementById("rock").addEventListener("click", ()=> {
   rockImage.classList.remove('animated');
   window.requestAnimationFrame(function() {
     rockImage.classList.add('animated');
+    lightningImage.classList.add('lightning')
   });
   
-  
+  lightningImage.classList.remove('lightning')
   playerMove("rock");
   computerMove();
   compareResults();
@@ -38,7 +40,9 @@ document.getElementById("paper").onclick=()=>{
   scissorsImage.classList.remove('animated');
   window.requestAnimationFrame(function() {
     paperImage.classList.add('animated');
+    lightningImage.classList.add('lightning')
   });
+  lightningImage.classList.remove('lightning')
   
   
   //document.getElementById("paper-image").style.animationIterationCount="1";
@@ -51,7 +55,10 @@ document.getElementById("scissors").onclick=()=>{
   rockImage.classList.remove('animated');
   window.requestAnimationFrame(function() {
     scissorsImage.classList.add('animated');
+    lightningImage.classList.add('lightning');
   });
+  
+  lightningImage.classList.remove('lightning');
   
 	playerMove("scissors");
 	computerMove();
