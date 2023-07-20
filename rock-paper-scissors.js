@@ -5,7 +5,7 @@ var computerScore=0;
 document.getElementById("button").addEventListener("click", (e)=> {
 	document.getElementById("button").style.visibility="hidden";
   document.getElementsByClassName("buttons")[0].style.visibility="visible";
-  document.getElementsByClassName("images")[0].style.visibility="visible";
+  //document.getElementsByClassName("images")[0].style.visibility="visible";
   })
 	//if the score for the playor or computer is == 5 the loop breaks
 	//while ((playerScore<5) &&(computerScore<5)){
@@ -17,18 +17,27 @@ var paperImage=document.getElementById("paper-image");
 var rockImage=document.getElementById("rock-image");
 var scissorsImage=document.getElementById("scissors-image");
 var lightningImage=document.getElementById('lightning');
+var computerImage=document.getElementById("computer-image");
+
+
 
 
 document.getElementById("rock").addEventListener("click", ()=> {
-	paperImage.classList.remove('animated');
-  scissorsImage.classList.remove('animated');
-  rockImage.classList.remove('animated');
+	
   window.requestAnimationFrame(function() {
     rockImage.classList.add('animated');
     lightningImage.classList.add('lightning')
+   	//rockImage.style.visibility="visible";
+    rockImage.style.visibility="hidden"
   });
   
-  lightningImage.classList.remove('lightning')
+  paperImage.classList.remove('animated');
+  scissorsImage.classList.remove('animated');
+  rockImage.classList.remove('animated');
+  lightningImage.classList.remove('lightning');
+  //rockImage.style.visibility="visible";
+  //rockImage.style.visibility="hidden";
+  
   playerMove("rock");
   computerMove();
   compareResults();
@@ -40,9 +49,10 @@ document.getElementById("paper").onclick=()=>{
   scissorsImage.classList.remove('animated');
   window.requestAnimationFrame(function() {
     paperImage.classList.add('animated');
-    lightningImage.classList.add('lightning')
-  });
-  lightningImage.classList.remove('lightning')
+    lightningImage.classList.add('lightning');
+    paperImage.style.visibility='hidden';
+    });
+  lightningImage.classList.remove('lightning');
   
   
   //document.getElementById("paper-image").style.animationIterationCount="1";
@@ -56,6 +66,7 @@ document.getElementById("scissors").onclick=()=>{
   window.requestAnimationFrame(function() {
     scissorsImage.classList.add('animated');
     lightningImage.classList.add('lightning');
+    scissorsImage.style.visibility="hidden";
   });
   
   lightningImage.classList.remove('lightning');
@@ -78,14 +89,49 @@ function playerMove(x) {
 		//computer player randomly chooses rock paper or scissors
 function computerMove() {
   let randomMove = Math.floor(Math.random() * 2);
+  //below for debugging computer move animations
+  //let randomMove=0; 
   if (randomMove === 0) {
     computerChoice = "rock";
+    window.requestAnimationFrame(function() {
+    	computerImage.setAttribute('src',"https://github.com/abarnard91/Odin-Rock-Paper-Scissors/blob/rps-ui/images/rock-sprite.png?raw=true");
+      computerImage.setAttribute("height",'200vh');
+      computerImage.setAttribute('width','200vw');
+    	computerImage.classList.add('computerAnimated');
+    	computerImage.style.visibility="hidden";
+  	});
+  
+  	computerImage.classList.remove('computerAnimated');
+    computerImage.removeAttribute('src','width','height');;
+    
   }
   else if (randomMove === 1) {
     computerChoice = "paper";
+    window.requestAnimationFrame(function() {
+    	computerImage.setAttribute('src',"https://github.com/abarnard91/Odin-Rock-Paper-Scissors/blob/rps-ui/images/paper-sprite.png?raw=true");
+      computerImage.setAttribute("height",'200vh');
+      computerImage.setAttribute('width','200vw');
+    	computerImage.classList.add('computerAnimated');
+    	computerImage.style.visibility="hidden";
+  	});
+  
+  	computerImage.classList.remove('computerAnimated');
+    computerImage.removeAttribute('src','width','height');
+    
   }
   else if (randomMove === 2) {
     computerChoice = "scissors";
+    window.requestAnimationFrame(function() {
+    	computerImage.setAttribute('src',"https://github.com/abarnard91/Odin-Rock-Paper-Scissors/blob/rps-ui/images/scissors-sprite.png?raw=true");
+      computerImage.setAttribute("height",'200vh');
+      computerImage.setAttribute('width','200vw');
+    	computerImage.classList.add('computerAnimated');
+    	computerImage.style.visibility="hidden";
+  	});
+    
+  	computerImage.classList.remove('computerAnimated');
+    computerImage.removeAttribute('src','width','height');
+    
   }
   console.log(`computer choice is ${computerChoice}`);
 }
@@ -124,7 +170,7 @@ function compareResults(){
     // if the player has 5 points, display "you win"
   if (playerScore===5){
     document.getElementById("header").innerHTML="YOU WON!!!!";
-    document.getElementById("instructions").innerHTML="Click the button or Close the page there's nothing else to do here ";
+    document.getElementById("instructions").innerHTML="Click the button or Close the page there's nothing else to do here";
     document.getElementsByClassName("buttons")[0].style="hidden";
     document.getElementById("button").style.visibility="visible";
     document.getElementById("button").innerHTML="Click me to play again.";
