@@ -18,18 +18,21 @@ button{background-color: black;
         color: brown;
         font-size: larger;
         font-weight: 600;
+        border-radius: 8px;
         
 }
 .images{
-  display: flex;
+  /*display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-around;*/
   width: 100vw;
+  height: 30vh;
   visibility: hidden;
 }
-#scissors-image, #rock-image, #paper-image{
+#scissors-image, #rock-image, #paper-image,#computer-image{
   margin: 10px;
   z-index: 1;
+  position:absolute;
    
 }
 #lightning{
@@ -38,6 +41,8 @@ button{background-color: black;
   z-index: 2;
   margin-top: 0px;
   visibility: hidden;
+  margin-left: 45vw;
+  
   
 }
 .lightning{
@@ -48,26 +53,50 @@ button{background-color: black;
   animation-delay: 0.5s;
   
 }
-.animated{ animation-duration: 1s;
-    animation-name: slidein;
+.animated{ animation-duration: 2s;
+    animation-name: slideinLeft;
     animation-iteration-count: 1;
-    animation-fill-mode: both;
+    animation-fill-mode: backwards;
+    animation-timing-function: cubic-bezier(0,1,0,1);
     }
     
-@keyframes slidein {
+.computerAnimated{ animation-duration: 2s;
+    animation-name: slideinRight;
+    animation-iteration-count: 1;
+    animation-fill-mode: backwards;
+    animation-timing-function: cubic-bezier(0,1,0,1);
+    }
+    
+@keyframes slideinLeft {
   0% {
-    margin-left: 0%;
+    visibility: visible;
+    left: 0%;
   }
   50% {
-    margin-left: 300px;
+    left: 25%;
   }
   100% {
-    margin-left: 0%;
+    left: 0%;
+   
+  }
+}
+
+@keyframes slideinRight {
+  0% {
+    visibility: visible;
+    right: 0%;
+  }
+  50% {
+    right: 27%;
+  }
+  100% {
+    right: 0%;
+   
   }
 }
 
 @keyframes flash {
-  0%{transform: scaleY(2);
+  0%{ transform: scaleY(2);
     
     visibility: visible;
   }
@@ -77,7 +106,7 @@ button{background-color: black;
    
   }
   
-  50%{transform: scale(1);
+  50%{ transform: scale(1);
     visibility: visible;
   }
   
@@ -91,7 +120,7 @@ button{background-color: black;
   }
 }
 
-.buttons{display: flex;
+.buttons{ display: flex;
         flex-direction: row;
         justify-content: space-around;
         width: 100vw;
@@ -103,8 +132,8 @@ button{background-color: black;
           
           text-align: center;
           width: 120px;
-          /*padding: 5px;*/
           height: 25px;
           margin: 10px;
+          border-radius: 8px;
           
 }
