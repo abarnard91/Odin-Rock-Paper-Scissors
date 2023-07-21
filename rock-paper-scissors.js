@@ -5,7 +5,6 @@ var computerScore=0;
 document.getElementById("button").addEventListener("click", (e)=> {
 	document.getElementById("button").style.visibility="hidden";
   document.getElementsByClassName("buttons")[0].style.visibility="visible";
-  //document.getElementsByClassName("images")[0].style.visibility="visible";
   })
 	//if the score for the playor or computer is == 5 the loop breaks
 	//while ((playerScore<5) &&(computerScore<5)){
@@ -18,6 +17,7 @@ var rockImage=document.getElementById("rock-image");
 var scissorsImage=document.getElementById("scissors-image");
 var lightningImage=document.getElementById('lightning');
 var computerImage=document.getElementById("computer-image");
+var playerImage="";
 
 
 
@@ -25,54 +25,41 @@ var computerImage=document.getElementById("computer-image");
 document.getElementById("rock").addEventListener("click", ()=> {
 	
   window.requestAnimationFrame(function() {
-    rockImage.classList.add('animated');
     lightningImage.classList.add('lightning')
-   	//rockImage.style.visibility="visible";
-    rockImage.style.visibility="hidden"
   });
-  
-  paperImage.classList.remove('animated');
-  scissorsImage.classList.remove('animated');
-  rockImage.classList.remove('animated');
+
   lightningImage.classList.remove('lightning');
-  //rockImage.style.visibility="visible";
-  //rockImage.style.visibility="hidden";
+  
   
   playerMove("rock");
   computerMove();
+  playerImage= rockImage;
   compareResults();
   });
 document.getElementById("paper").onclick=()=>{
 	playerMove("paper");
-  paperImage.classList.remove('animated');
-  rockImage.classList.remove('animated');
-  scissorsImage.classList.remove('animated');
+  
   window.requestAnimationFrame(function() {
-    paperImage.classList.add('animated');
     lightningImage.classList.add('lightning');
-    paperImage.style.visibility='hidden';
     });
+    
   lightningImage.classList.remove('lightning');
-  
-  
-  //document.getElementById("paper-image").style.animationIterationCount="1";
-	computerMove();
+ 
+ 	computerMove();
+  playerImage=paperImage;
 	compareResults();
   }
 document.getElementById("scissors").onclick=()=>{
-	paperImage.classList.remove('animated');
-  scissorsImage.classList.remove('animated');
-  rockImage.classList.remove('animated');
+
   window.requestAnimationFrame(function() {
-    scissorsImage.classList.add('animated');
     lightningImage.classList.add('lightning');
-    scissorsImage.style.visibility="hidden";
   });
   
   lightningImage.classList.remove('lightning');
   
 	playerMove("scissors");
 	computerMove();
+  playerImage=scissorsImage;
 	compareResults();
   }
     
@@ -83,12 +70,13 @@ function playerMove(x) {
 			console.log(`player entered ${x}`);
        playerChoice=x;
        return playerChoice;
+       
 		
 		}
 
 		//computer player randomly chooses rock paper or scissors
 function computerMove() {
-  let randomMove = Math.floor(Math.random() * 2);
+  let randomMove = Math.floor(Math.random() * 3);
   //below for debugging computer move animations
   //let randomMove=0; 
   if (randomMove === 0) {
@@ -97,12 +85,7 @@ function computerMove() {
     	computerImage.setAttribute('src',"https://github.com/abarnard91/Odin-Rock-Paper-Scissors/blob/rps-ui/images/rock-sprite.png?raw=true");
       computerImage.setAttribute("height",'200vh');
       computerImage.setAttribute('width','200vw');
-    	computerImage.classList.add('computerAnimated');
-    	computerImage.style.visibility="hidden";
   	});
-  
-  	computerImage.classList.remove('computerAnimated');
-    computerImage.removeAttribute('src','width','height');;
     
   }
   else if (randomMove === 1) {
@@ -111,12 +94,7 @@ function computerMove() {
     	computerImage.setAttribute('src',"https://github.com/abarnard91/Odin-Rock-Paper-Scissors/blob/rps-ui/images/paper-sprite.png?raw=true");
       computerImage.setAttribute("height",'200vh');
       computerImage.setAttribute('width','200vw');
-    	computerImage.classList.add('computerAnimated');
-    	computerImage.style.visibility="hidden";
   	});
-  
-  	computerImage.classList.remove('computerAnimated');
-    computerImage.removeAttribute('src','width','height');
     
   }
   else if (randomMove === 2) {
@@ -125,12 +103,7 @@ function computerMove() {
     	computerImage.setAttribute('src',"https://github.com/abarnard91/Odin-Rock-Paper-Scissors/blob/rps-ui/images/scissors-sprite.png?raw=true");
       computerImage.setAttribute("height",'200vh');
       computerImage.setAttribute('width','200vw');
-    	computerImage.classList.add('computerAnimated');
-    	computerImage.style.visibility="hidden";
   	});
-    
-  	computerImage.classList.remove('computerAnimated');
-    computerImage.removeAttribute('src','width','height');
     
   }
   console.log(`computer choice is ${computerChoice}`);
@@ -146,6 +119,19 @@ function compareResults(){
   
   if (playerChoice ===computerChoice){
     preScore.textContent = "it's a tie. NO POINTS!!! push button again!";
+    window.requestAnimationFrame(function() {
+    	playerImage.classList.add('animated');
+      
+      computerImage.classList.add('computerAnimated');
+      })
+      
+    playerImage.classList.remove('animated', 'player-loss-animation');
+    paperImage.classList.remove('animated', 'player-loss-animation');
+  	scissorsImage.classList.remove('animated', 'player-loss-animation');
+  	rockImage.classList.remove('animated', 'player-loss-animation');
+    
+  	computerImage.classList.remove('computerAnimated','computer-loss-animation');
+    computerImage.removeAttribute('src','width','height');
     
     
       }
@@ -155,14 +141,41 @@ function compareResults(){
     computerScore+=1
     score.textContent = `The score is player ${playerScore} computer ${computerScore}`;
     score.appendChild(preScore);
-   
+    window.requestAnimationFrame(function() {
+    	playerImage.classList.add('player-loss-animation');
+      
+      computerImage.classList.add('computerAnimated');
+    	computerImage.style.visibility="hidden";
+      })
+    playerImage.classList.remove('animated', 'player-loss-animation');
+    paperImage.classList.remove('animated', 'player-loss-animation');
+  	scissorsImage.classList.remove('animated', 'player-loss-animation');
+  	rockImage.classList.remove('animated', 'player-loss-animation');
+    
+    computerImage.classList.remove('computerAnimated','computer-loss-animation');
+    computerImage.removeAttribute('src','width','height');
 		}
+   	
   if  (((playerChoice === scissors) && (computerChoice===paper))|| ((playerChoice=== paper) &&(computerChoice===rock)) ||((playerChoice===rock)&&(computerChoice===scissors))){
   	
     preScore.textContent = "You've won the round!!!! huzzah! 1 point to you";
     playerScore+=1
     score.textContent=`The score is player ${playerScore} computer ${computerScore}`;
     score.appendChild(preScore);
+    
+    window.requestAnimationFrame(function() {
+    	playerImage.classList.add('animated');
+      
+      computerImage.classList.add('computer-loss-animation');
+    	computerImage.style.visibility="hidden";
+      })
+    playerImage.classList.remove('animated', 'player-loss-animation');
+    paperImage.classList.remove('animated', 'player-loss-animation');
+  	scissorsImage.classList.remove('animated', 'player-loss-animation');
+  	rockImage.classList.remove('animated', 'player-loss-animation');
+    
+    computerImage.classList.remove('computer-loss-animation', "computerAnimated");
+    computerImage.removeAttribute('src','width','height');
     
     }
 
@@ -186,7 +199,6 @@ function compareResults(){
     
     document.getElementsByClassName("buttons")[0].style="hidden";
     document.getElementById("button").style.visibility="visible";
-    //document.getElementsById("button").innerHTML="Click me to play again."
     document.getElementById("button").innerHTML="Click me to play again.";
     playerScore=0;
     computerScore=0;
