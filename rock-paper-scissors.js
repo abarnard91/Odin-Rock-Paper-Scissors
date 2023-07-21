@@ -82,7 +82,7 @@ function computerMove() {
   if (randomMove === 0) {
     computerChoice = "rock";
     window.requestAnimationFrame(function() {
-    	computerImage.setAttribute('src',"https://github.com/abarnard91/Odin-Rock-Paper-Scissors/blob/rps-ui/images/rock-sprite.png?raw=true");
+    	computerImage.setAttribute('src',"images/rock-sprite.png");
       computerImage.setAttribute("height",'200vh');
       computerImage.setAttribute('width','200vw');
   	});
@@ -91,7 +91,7 @@ function computerMove() {
   else if (randomMove === 1) {
     computerChoice = "paper";
     window.requestAnimationFrame(function() {
-    	computerImage.setAttribute('src',"https://github.com/abarnard91/Odin-Rock-Paper-Scissors/blob/rps-ui/images/paper-sprite.png?raw=true");
+    	computerImage.setAttribute('src',"images/paper-sprite.png");
       computerImage.setAttribute("height",'200vh');
       computerImage.setAttribute('width','200vw');
   	});
@@ -100,7 +100,7 @@ function computerMove() {
   else if (randomMove === 2) {
     computerChoice = "scissors";
     window.requestAnimationFrame(function() {
-    	computerImage.setAttribute('src',"https://github.com/abarnard91/Odin-Rock-Paper-Scissors/blob/rps-ui/images/scissors-sprite.png?raw=true");
+    	computerImage.setAttribute('src',"images/scissors-sprite.png");
       computerImage.setAttribute("height",'200vh');
       computerImage.setAttribute('width','200vw');
   	});
