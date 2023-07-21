@@ -50,13 +50,14 @@ button{background-color: black;
   animation-name: flash;
   animation-iteration-count: 10;
   animation-timing-function: ease-out;
-  animation-delay: 0.5s;
+  animation-delay: 0.25s;
   
 }
 .animated{ animation-duration: 2s;
     animation-name: slideinLeft;
     animation-iteration-count: 1;
     animation-fill-mode: backwards;
+    /*animation-timing-function: ease-in;*/
     animation-timing-function: cubic-bezier(0,1,0,1);
     }
     
@@ -64,6 +65,22 @@ button{background-color: black;
     animation-name: slideinRight;
     animation-iteration-count: 1;
     animation-fill-mode: backwards;
+    /*animation-timing-function: ease-in;*/
+    animation-timing-function: cubic-bezier(0,1,0,1);
+    }
+    
+    .player-loss-animation{ animation-duration: 2s;
+    animation-name: slideinLeftLoss;
+    animation-iteration-count: 1;
+    animation-fill-mode: backwards;
+    animation-timing-function: cubic-bezier(0,1,0,1);
+    }
+    
+.computer-loss-animation{ animation-duration: 2s;
+    animation-name: slideinRightLoss;
+    animation-iteration-count: 1;
+    animation-fill-mode: backwards;
+    /*animation-timing-function: ease-in;*/
     animation-timing-function: cubic-bezier(0,1,0,1);
     }
     
@@ -73,10 +90,28 @@ button{background-color: black;
     left: 0%;
   }
   50% {
-    left: 25%;
+    left: 27%;
+    transform: rotateZ(30deg);
+   
   }
   100% {
     left: 0%;
+   
+  }
+}
+
+@keyframes slideinLeftLoss {
+  0% {
+    visibility: visible;
+    left: 0%;
+  }
+  50% {
+    left: 27%;
+    transform: rotateZ(30deg);
+  }
+  100% {
+    left: -25%;
+    transform: rotateZ(-90deg);
    
   }
 }
@@ -87,10 +122,27 @@ button{background-color: black;
     right: 0%;
   }
   50% {
-    right: 27%;
+    right: 29%;
+    transform: rotateZ(-30deg);
   }
   100% {
     right: 0%;
+   
+  }
+}
+
+@keyframes slideinRightLoss {
+  0% {
+    visibility: visible;
+    right: 0%;
+  }
+  50% {
+    right: 29%;
+    transform: rotateZ(-30deg);
+  }
+  100% {
+    right: -27%;
+    transform: rotateZ(90deg);
    
   }
 }
