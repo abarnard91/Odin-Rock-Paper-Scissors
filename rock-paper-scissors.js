@@ -83,8 +83,8 @@ function computerMove() {
     computerChoice = "rock";
     window.requestAnimationFrame(function() {
     	computerImage.setAttribute('src',"images/rock-sprite.png");
-      computerImage.setAttribute("height",'200vh');
-      computerImage.setAttribute('width','200vw');
+      computerImage.setAttribute("height",'300vh');
+      computerImage.setAttribute('width','300vw');
   	});
     
   }
@@ -92,8 +92,8 @@ function computerMove() {
     computerChoice = "paper";
     window.requestAnimationFrame(function() {
     	computerImage.setAttribute('src',"images/paper-sprite.png");
-      computerImage.setAttribute("height",'200vh');
-      computerImage.setAttribute('width','200vw');
+      computerImage.setAttribute("height",'300vh');
+      computerImage.setAttribute('width','300vw');
   	});
     
   }
@@ -101,8 +101,8 @@ function computerMove() {
     computerChoice = "scissors";
     window.requestAnimationFrame(function() {
     	computerImage.setAttribute('src',"images/scissors-sprite.png");
-      computerImage.setAttribute("height",'200vh');
-      computerImage.setAttribute('width','200vw');
+      computerImage.setAttribute("height",'300vh');
+      computerImage.setAttribute('width','300vw');
   	});
     
   }
